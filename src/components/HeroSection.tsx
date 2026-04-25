@@ -69,20 +69,20 @@ const HeroHeader = () => {
             <nav
                 data-state={menuState && 'active'}
                 className="fixed group z-20 w-full px-2">
-                <div className={cn('mx-auto mt-2 max-w-6xl px-6 transition-all duration-300 lg:px-12', isScrolled && 'bg-white/80 max-w-4xl rounded-2xl border border-gray-200 backdrop-blur-lg lg:px-5 shadow-lg')}>
-                    <div className="relative flex flex-wrap items-center justify-between gap-6 lg:gap-0 lg:py-4 px-[0px] py-[18px]">
+                <div className={cn('mx-auto mt-2 max-w-6xl px-4 md:px-6 transition-all duration-300 lg:px-12', isScrolled && 'bg-white/80 max-w-4xl rounded-2xl border border-gray-200 backdrop-blur-lg lg:px-5 shadow-lg')}>
+                    <div className="relative flex flex-wrap items-center justify-between gap-6 lg:gap-0 lg:py-4 px-0 py-3 md:py-[18px]">
                         <div className="flex w-full justify-between lg:w-auto">
                             <a
                                 href="/"
                                 aria-label="home"
-                                className="flex items-center space-x-2">
+                                className="flex items-center space-x-2 pl-2 lg:pl-0">
                                 <Logo />
                             </a>
 
                             <button
                                 onClick={() => setMenuState(!menuState)}
                                 aria-label={menuState == true ? 'Close Menu' : 'Open Menu'}
-                                className="relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 lg:hidden">
+                                className="relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 pr-6 lg:hidden">
                                 <Menu className="group-data-[state=active]:rotate-180 group-data-[state=active]:scale-0 group-data-[state=active]:opacity-0 m-auto size-6 duration-200 text-gray-700" />
                                 <X className="group-data-[state=active]:rotate-0 group-data-[state=active]:scale-100 group-data-[state=active]:opacity-100 absolute inset-0 m-auto size-6 -rotate-180 scale-0 opacity-0 duration-200 text-gray-700" />
                             </button>
@@ -145,8 +145,8 @@ const LogoCloud = () => {
         <section className="bg-white md:pb-32 pt-[0px] pr-[0px] pb-[18px] pl-[0px]">
             <div className="group relative m-auto max-w-6xl px-6">
                 <div className="flex flex-col items-center md:flex-row">
-                    <div className="inline md:max-w-44 md:border-r md:border-gray-200 md:pr-6">
-                        <p className="text-end text-sm text-gray-600">Trusted by 500+ schools across India</p>
+                    <div className="inline md:max-w-44 md:border-r md:border-gray-200 md:pr-6 px-4 md:px-0 mb-4 md:mb-0">
+                        <p className="text-center md:text-end text-sm text-gray-600 font-medium">Trusted by 500+ schools across India</p>
                     </div>
                     <div className="relative py-6 md:w-[calc(100%-11rem)]">
                         <InfiniteSlider

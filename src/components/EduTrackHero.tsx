@@ -34,8 +34,8 @@ export function EduTrackHero() {
             </div>
           </div>
           <div className="flex gap-4 flex-col items-center">
-            <h1 className="text-5xl md:text-7xl max-w-4xl tracking-tighter text-center font-normal font-[Poppins] leading-tight">
-              <span className="text-[rgb(4,35,101)] text-[64px]">School Management made</span>
+            <h1 className="text-4xl md:text-7xl max-w-4xl tracking-tighter text-center font-normal font-[Poppins] leading-tight">
+              <span className="text-[rgb(4,35,101)] text-4xl md:text-[64px]">School Management made</span>
               <span className="relative flex w-full justify-center overflow-hidden text-center h-[1.2em]">
                 &nbsp;
                 {titles.map((title, index) => (
@@ -67,21 +67,21 @@ export function EduTrackHero() {
             </p>
           </div>
           
-          <div className="mt-8 flex flex-col sm:flex-row gap-4 w-full justify-center">
+          <div className="mt-8 flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center px-6 sm:px-0">
             <RequestDemoDialog>
               <ShimmerButton
                 background="linear-gradient(135deg, #2563eb, #1d4ed8)"
                 borderRadius="0.75rem"
-                className="h-14 px-10 text-lg">
-                <span className="flex items-center gap-2">
-                   Request Demo <MoveRight className="size-5" />
+                className="h-12 md:h-14 px-8 md:px-10 text-base md:text-lg w-full sm:w-auto">
+                <span className="flex items-center justify-center gap-2">
+                   Request Demo <MoveRight className="size-4 md:size-5" />
                 </span>
               </ShimmerButton>
             </RequestDemoDialog>
             <RequestDemoDialog>
               <Button
                 variant="outline"
-                className="h-14 px-10 text-lg border-2 border-blue-600 text-blue-600 hover:bg-blue-50 bg-white">
+                className="h-12 md:h-14 px-8 md:px-10 text-base md:text-lg border-2 border-blue-600 text-blue-600 hover:bg-blue-50 bg-white w-full sm:w-auto">
                 Contact Sales
               </Button>
             </RequestDemoDialog>

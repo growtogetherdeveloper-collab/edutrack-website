@@ -41,18 +41,18 @@ const features = [
 
 export function FeatureGrid() {
   return (
-    <section id="features" className="py-20 px-4 bg-white">
+    <section id="features" className="py-12 md:py-20 px-4 bg-white scroll-mt-20">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl text-gray-900 mb-4">
+        <div className="text-center mb-10 md:mb-16">
+          <h2 className="text-3xl lg:text-5xl text-gray-900 mb-4 px-2">
             Everything a Modern School Needs
           </h2>
-          <p className="text-xl text-gray-600">
+          <p className="text-lg md:text-xl text-gray-600 px-4">
             Comprehensive tools for complete school management
           </p>
         </div>
         
-        <div className="relative mx-auto grid max-w-2xl lg:max-w-5xl divide-x divide-y border *:p-12 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="relative mx-auto grid max-w-2xl lg:max-w-5xl divide-x-0 divide-y md:divide-x md:divide-y border *:p-6 md:*:p-12 sm:grid-cols-2 lg:grid-cols-3 rounded-2xl overflow-hidden">
           {features.map((feature, index) => (
             <div
               key={index}

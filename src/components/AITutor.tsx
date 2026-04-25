@@ -106,38 +106,38 @@ export function AITutor() {
                 </div>
                 
                 {/* AI Loader Component */}
-                <div className="relative z-20">
-                  <AILoader size={240} text="AI Tutor" fullScreen={false} />
+                <div className="relative z-20 scale-75 md:scale-100">
+                  <AILoader size={180} text="AI Tutor" fullScreen={false} />
                 </div>
 
               </div>
 
               {/* Right Column - Text Content */}
-              <div className="max-w-lg space-y-6 text-left">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#e8f1ff] text-[#155dfc] rounded-full">
-                  <Sparkles className="h-5 w-5" />
+              <div className="max-w-lg space-y-6 text-center lg:text-left mx-auto lg:mx-0">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#e8f1ff] text-[#155dfc] rounded-full text-xs md:text-sm">
+                  <Sparkles className="h-4 w-4 md:h-5 md:w-5" />
                   <span>Powered by AI</span>
                 </div>
                 
-                <h2 className="text-4xl lg:text-5xl text-gray-900 text-left">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl text-gray-900 leading-tight">
                   Meet Your AI Learning Assistant 🤖
                 </h2>
                 
-                <p className="text-xl text-gray-600 text-left">
+                <p className="text-lg md:text-xl text-gray-600">
                   An in-app AI chat trained on your school's syllabus.
                 </p>
                 
                 {/* Feature List */}
-                <div className="mt-8 grid grid-cols-1 gap-3 text-left">
+                <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 text-left">
                   {aiFeatures.map((feature, index) => (
                     <div
                       key={index}
-                      className="flex items-center gap-3 text-gray-700"
+                      className="flex items-center gap-3 text-gray-700 bg-white/50 p-2 rounded-lg border border-transparent hover:border-blue-100 transition-colors"
                     >
-                      <div className="w-8 h-8 bg-[#e8f1ff] rounded-full flex items-center justify-center flex-shrink-0">
-                        <feature.icon className="h-4 w-4 text-[#155dfc]" />
+                      <div className="w-7 h-7 md:w-8 md:h-8 bg-[#e8f1ff] rounded-full flex items-center justify-center flex-shrink-0">
+                        <feature.icon className="h-3.5 w-3.5 md:h-4 md:w-4 text-[#155dfc]" />
                       </div>
-                      <span className="text-sm">{feature.title}</span>
+                      <span className="text-xs md:text-sm font-medium">{feature.title}</span>
                     </div>
                   ))}
                 </div>
