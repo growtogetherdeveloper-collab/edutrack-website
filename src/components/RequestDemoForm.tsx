@@ -53,12 +53,8 @@ export function RequestDemoForm({ className, onSuccess }: { className?: string, 
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      const sheetUrl = import.meta.env.VITE_GOOGLE_SHEET_URL;
-      
-      // If URL is not set or is the placeholder, try the local API
-      const targetUrl = (sheetUrl && sheetUrl !== "YOUR_DEPLOYED_WEB_APP_URL_HERE") 
-        ? sheetUrl 
-        : "/api/leads";
+      // Hardcoded URL to ensure it works live without needing environment variable setup
+      const targetUrl = "https://script.google.com/macros/s/AKfycbzcjLTZBtmIaWNHg1VKuf_WtE74Uv5Gvz-EFbHbCiFJTaVOyTHhbjQfh72Wo2Fu4BZO/exec";
 
       const response = await fetch(targetUrl, {
         method: "POST",
