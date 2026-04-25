@@ -66,9 +66,7 @@ export function RequestDemoForm({ className, onSuccess }: { className?: string, 
         throw new Error(`Server returned ${response.status}`);
       }
       
-      toast.success("Request submitted!", {
-        description: "We'll be in touch shortly to schedule your demo.",
-      })
+      toast.success("Request submitted")
       setIsSubmitted(true);
       form.reset();
       if (onSuccess) onSuccess();

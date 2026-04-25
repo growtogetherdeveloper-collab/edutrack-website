@@ -8,11 +8,22 @@ import {
 import { RequestDemoForm } from "./RequestDemoForm"
 import { CheckCircle2, ShieldCheck, Zap, Users, GraduationCap } from "lucide-react"
 
+import { useState } from "react"
+
 interface RequestDemoDialogProps {
   children: React.ReactNode
 }
 
 export function RequestDemoDialog({ children }: RequestDemoDialogProps) {
+  const [open, setOpen] = useState(false);
+
+  const handleSuccess = () => {
+    // Close the dialog after a short delay to let the user see the "Done" state
+    setTimeout(() => {
+      setOpen(false);
+    }, 1500);
+  };
+
   const schoolLogos = [
     { name: "Delhi Public School", img: "https://html.tailus.io/blocks/customers/nvidia.svg" },
     { name: "Ryan International", img: "https://html.tailus.io/blocks/customers/column.svg" },
@@ -46,7 +57,7 @@ export function RequestDemoDialog({ children }: RequestDemoDialogProps) {
   ]
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         {children}
       </DialogTrigger>
@@ -107,7 +118,7 @@ export function RequestDemoDialog({ children }: RequestDemoDialogProps) {
                   Fill out the form below and our team will be in touch.
                 </p>
               </div>
-              <RequestDemoForm className="bg-transparent" />
+              <RequestDemoForm className="bg-transparent" onSuccess={handleSuccess} />
             </div>
           </div>
         </div>
