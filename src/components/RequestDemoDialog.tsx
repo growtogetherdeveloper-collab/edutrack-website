@@ -6,9 +6,10 @@ import {
   DialogTrigger,
 } from "./ui/dialog"
 import { RequestDemoForm } from "./RequestDemoForm"
-import { CheckCircle2, ShieldCheck, Zap, Users, GraduationCap } from "lucide-react"
+import { CheckCircle2, ShieldCheck, Zap, Users, GraduationCap, PartyPopper } from "lucide-react"
 
 import { useState } from "react"
+import { motion, AnimatePresence } from "motion/react"
 
 interface RequestDemoDialogProps {
   children: React.ReactNode
@@ -16,12 +17,16 @@ interface RequestDemoDialogProps {
 
 export function RequestDemoDialog({ children }: RequestDemoDialogProps) {
   const [open, setOpen] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const handleSuccess = () => {
-    // Close the dialog after a short delay to let the user see the "Done" state
+    setShowSuccess(true);
+    // Close the dialog after the user sees the success message
     setTimeout(() => {
       setOpen(false);
-    }, 1500);
+      // Reset success state after dialog finishes its exit animation
+      setTimeout(() => setShowSuccess(false), 500);
+    }, 2500);
   };
 
   const schoolLogos = [
@@ -57,7 +62,10 @@ export function RequestDemoDialog({ children }: RequestDemoDialogProps) {
   ]
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={(val) => {
+      setOpen(val);
+      if (!val) setTimeout(() => setShowSuccess(false), 500);
+    }}>
       <DialogTrigger asChild>
         {children}
       </DialogTrigger>
@@ -109,17 +117,46 @@ export function RequestDemoDialog({ children }: RequestDemoDialogProps) {
             </div>
           </div>
 
-          {/* Right Area - Form */}
-          <div className="w-full md:w-[62%] p-5 md:p-10 flex flex-col justify-center bg-[#f8fbff]">
-            <div className="max-w-[440px] mx-auto w-full">
-              <div className="mb-6">
-                <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-1">Schedule Your Demo</h2>
-                <p className="text-gray-500 text-[11px] md:text-[12px]">
-                  Fill out the form below and our team will be in touch.
-                </p>
-              </div>
-              <RequestDemoForm className="bg-transparent" onSuccess={handleSuccess} />
-            </div>
+          {/* Right Area - Form or Success Message */}
+          <div className="w-full md:w-[62%] p-5 md:p-10 flex flex-col justify-center bg-[#f8fbff] relative overflow-hidden">
+            <AnimatePresence mode="wait">
+              {!showSuccess ? (
+                <motion.div 
+                  key="form"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  className="max-w-[440px] mx-auto w-full"
+                >
+                  <div className="mb-6">
+                    <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-1">Schedule Your Demo</h2>
+                    <p className="text-gray-500 text-[11px] md:text-[12px]">
+                      Fill out the form below and our team will be in touch.
+                    </p>
+                  </div>
+                  <RequestDemoForm className="bg-transparent" onSuccess={handleSuccess} />
+                </motion.div>
+              ) : (
+                <motion.div 
+                  key="success"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="max-w-[440px] mx-auto w-full text-center py-10"
+                >
+                  <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 text-green-600">
+                    <PartyPopper size={40} />
+                  </div>
+                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Thank You!</h2>
+                  <p className="text-gray-600 mb-8">
+                    Your request has been submitted successfully. Our team will contact you shortly to schedule your personalized demo.
+                  </p>
+                  <div className="flex items-center justify-center gap-2 text-sm font-medium text-blue-600 animate-pulse">
+                    <div className="w-2 h-2 bg-blue-600 rounded-full" />
+                    Closing window...
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </DialogContent>
