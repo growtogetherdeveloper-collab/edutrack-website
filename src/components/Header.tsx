@@ -3,6 +3,7 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
 const navLinks = ["Features", "Pricing", "AI Tutor", "Schools", "Support"];
+const adminUrl = "https://admin.edutrack.co.in/";
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -34,8 +35,8 @@ export function Header() {
           
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-4">
-            <Button variant="ghost" className="text-gray-600 hover:text-gray-900">
-              Sign In
+            <Button asChild variant="ghost" className="text-gray-600 hover:text-gray-900">
+              <a href={adminUrl}>Sign In</a>
             </Button>
             <Button className="bg-blue-600 hover:bg-blue-700 text-white">
               Get Demo
@@ -67,8 +68,8 @@ export function Header() {
               ))}
             </nav>
             <div className="flex flex-col gap-2">
-              <Button variant="outline" className="w-full">
-                Sign In
+              <Button asChild variant="outline" className="w-full">
+                <a href={adminUrl}>Sign In</a>
               </Button>
               <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
                 Get Demo
