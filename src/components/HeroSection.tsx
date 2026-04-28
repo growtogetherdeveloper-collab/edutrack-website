@@ -52,6 +52,8 @@ const menuItems = [
     { name: 'About', href: '#about' },
 ]
 
+const adminUrl = 'https://admin.edutrack.co.in/'
+
 const HeroHeader = () => {
     const [menuState, setMenuState] = React.useState(false)
     const [isScrolled, setIsScrolled] = React.useState(false)
@@ -117,10 +119,13 @@ const HeroHeader = () => {
                                 </ul>
                             </div>
                                 <Button
-                                    size="sm"
-                                    className="bg-blue-600 hover:bg-blue-700">
+                                asChild
+                                size="sm"
+                                className="bg-blue-600 hover:bg-blue-700">
+                                <a href={adminUrl}>
                                     <span>Sign In</span>
-                                </Button>
+                                </a>
+                            </Button>
                         </div>
                     </div>
                 </div>
